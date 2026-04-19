@@ -1,37 +1,68 @@
 /* Default LIGHT theme */
-body {
-    margin: 0;
+/* Reset */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #ffffff;
-    color: #222;
-    transition: 0.3s;
 }
 
-.container {
-    text-align: center;
-    margin-top: 150px;
+/* Center everything */
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(135deg,#1e3c72,#2a5298);
+    color:white;
 }
 
-button {
-    padding: 12px 25px;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+/* Card */
+.container{
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    width:320px;
 }
 
-/* DARK MODE */
-.dark-mode {
-    background-color: #121212;
-    color: #ffffff;
+h1{
+    margin-bottom:20px;
 }
 
-.dark-mode button {
-    background-color: #ffffff;
-    color: #121212;
+/* Time input */
+input[type="time"]{
+    padding:10px;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    margin-bottom:15px;
+    width:100%;
 }
 
-button {
-    background-color: #121212;
-    color: #ffffff;
+/* Button */
+button{
+    padding:12px 20px;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    background:#ff7a18;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+    width:100%;
+}
+
+button:hover{
+    background:#ff9a3c;
+    transform:scale(1.05);
+}
+
+/* Status text */
+#status{
+    margin-top:20px;
+    font-size:18px;
+    font-weight:bold;
 }

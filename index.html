@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dark Light Mode</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Simple Alarm</title>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Dark & Light Mode</h1>
-        <p>Click the button to switch theme 🌙☀️</p>
-        <button id="themeToggle">Toggle Theme</button>
-    </div>
+<h1>Alarm Clock</h1>
 
-    <script src="script.js"></script>
+<input type="time" id="alarmTime">
+<button onclick="setAlarm()">Set Alarm</button>
+
+<h2 id="status"></h2>
+
+<audio id="alarmSound" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" preload="auto"></audio>
+
+<script src="script.js"></script>
 </body>
 </html>

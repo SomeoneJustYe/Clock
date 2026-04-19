@@ -1,19 +1,29 @@
-const toggleBtn = document.getElementById("themeToggle");
-const body = document.body;
+let alarmTime = null;
+let alarmTimeout = null;
 
-// Load saved theme when page opens
-if (localStorage.getItem("theme") === "dark") {
-    body.classList.add("dark-mode");
+function setAlarm() {
+    const timeInput = document.getElementById("alarmTime").value;
+    if (!timeInput) return;
+
+    const now = new Date();
+    const alarm = new Date();
+
+    const [hours, minutes] = timeInput.split(":");
+    alarm.setHours(hours);
+    alarm.setMinutes(minutes);
+    alarm.setSeconds(0);
+
+    if (alarm < now) {
+        alarm.setDate(alarm.getDate() + 1); // next day
+    }
+
+    const timeToAlarm = alarm - now;
+
+    alarmTimeout = setTimeout(triggerAlarm, timeToAlarm);
+    document.getElementById("status").innerText = "Alarm set for " + timeInput;
 }
 
-// Toggle theme when button clicked
-toggleBtn.addEventListener("click", () => {
-    body.classList.toggle("dark-mode");
-
-    // Save theme to localStorage
-    if (body.classList.contains("dark-mode")) {
-        localStorage.setItem("theme", "dark");
-    } else {
-        localStorage.setItem("theme", "light");
-    }
-});
+function triggerAlarm() {
+    document.getElementById("alarmSound").play();
+    alert("⏰ Wake up!");
+}
