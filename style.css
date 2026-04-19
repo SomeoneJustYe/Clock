@@ -1,0 +1,289 @@
+/* ─── Reset & Variables ─────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ 
+:root {
+  --bg:        #080b10;
+  --surface:   #0e1420;
+  --border:    rgba(255,255,255,0.07);
+  --accent:    #00e5ff;
+  --accent-dim:#007a8a;
+  --text:      #e8edf5;
+  --muted:     #4a5568;
+  --btn-hover: #111927;
+ 
+  --font-display: 'Share Tech Mono', monospace;
+  --font-ui:      'Syne', sans-serif;
+}
+ 
+/* ─── Background ─────────────────────────────────────── */
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+ 
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+ 
+.glow-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+}
+.orb1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, #00e5ff22, transparent 70%);
+  top: -160px; left: -120px;
+  animation: drift1 14s ease-in-out infinite alternate;
+}
+.orb2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, #005fff18, transparent 70%);
+  bottom: -120px; right: -80px;
+  animation: drift2 18s ease-in-out infinite alternate;
+}
+ 
+@keyframes drift1 {
+  to { transform: translate(40px, 30px); }
+}
+@keyframes drift2 {
+  to { transform: translate(-30px, -40px); }
+}
+ 
+/* ─── Container ──────────────────────────────────────── */
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 440px;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+ 
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+ 
+/* ─── Header ─────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+ 
+.logo-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+ 
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 6px var(--accent); }
+  50%       { box-shadow: 0 0 18px var(--accent); }
+}
+ 
+.logo-text {
+  font-family: var(--font-ui);
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+ 
+/* ─── Clock Display ──────────────────────────────────── */
+.clock-display {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 36px 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+ 
+.clock-display::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.6;
+}
+ 
+.date-line {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+ 
+.time-wrap {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  line-height: 1;
+}
+ 
+.time {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 12vw, 4.2rem);
+  color: var(--text);
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 30px rgba(0,229,255,0.15);
+  transition: opacity 0.1s;
+}
+ 
+.ampm {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--accent);
+  padding-bottom: 0.45rem;
+  letter-spacing: 0.1em;
+}
+ 
+.timezone {
+  font-size: 0.7rem;
+  color: var(--accent-dim);
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  margin-top: 4px;
+}
+ 
+/* ─── Nav Buttons ────────────────────────────────────── */
+.nav-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+ 
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  text-decoration: none;
+  color: var(--text);
+  cursor: pointer;
+  transition:
+    background 0.25s,
+    border-color 0.25s,
+    transform 0.18s;
+  position: relative;
+  overflow: hidden;
+  animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+ 
+.nav-btn:nth-child(1) { animation-delay: 0.1s; }
+.nav-btn:nth-child(2) { animation-delay: 0.18s; }
+.nav-btn:nth-child(3) { animation-delay: 0.26s; }
+ 
+.nav-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 40%, rgba(0,229,255,0.04) 100%);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+ 
+.nav-btn:hover {
+  background: var(--btn-hover);
+  border-color: rgba(0,229,255,0.25);
+  transform: translateX(4px);
+}
+ 
+.nav-btn:hover::after {
+  opacity: 1;
+}
+ 
+.nav-btn:active {
+  transform: translateX(2px) scale(0.99);
+}
+ 
+.btn-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(0,229,255,0.07);
+  border: 1px solid rgba(0,229,255,0.12);
+  color: var(--accent);
+  flex-shrink: 0;
+  transition: background 0.25s;
+}
+ 
+.btn-icon svg {
+  width: 20px;
+  height: 20px;
+}
+ 
+.nav-btn:hover .btn-icon {
+  background: rgba(0,229,255,0.13);
+}
+ 
+.btn-label {
+  flex: 1;
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+}
+ 
+.btn-arrow {
+  font-size: 1.1rem;
+  color: var(--muted);
+  transition: color 0.25s, transform 0.25s;
+}
+ 
+.nav-btn:hover .btn-arrow {
+  color: var(--accent);
+  transform: translateX(4px);
+}
+ 
+/* ─── Responsive ─────────────────────────────────────── */
+@media (max-width: 480px) {
+  .clock-display {
+    padding: 28px 24px;
+  }
+  .container {
+    gap: 28px;
+  }
+}
