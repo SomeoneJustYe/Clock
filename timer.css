@@ -1,0 +1,64 @@
+:root {
+    --primary-dark: #2c3e50;
+    --success-green: #27ae60;
+    --danger-red: #e74c3c;
+    --neutral-gray: #95a5a6;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f7f6;
+}
+
+.timer-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 350px;
+}
+
+#display {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: var(--primary-dark);
+    margin: 20px 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.inputs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.inputs input {
+    width: 30%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.controls button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    transition: opacity 0.2s;
+}
+
+.btn-start { background-color: var(--success-green); }
+.btn-pause { background-color: var(--accent-orange); } /* Reusing your orange! */
+.btn-reset { background-color: var(--neutral-gray); margin-left: 10px; }
+
+button:hover { opacity: 0.8; }
