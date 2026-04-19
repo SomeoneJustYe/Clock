@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Alarm Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="app">
+
+    <h1>⏰ Smart Alarm</h1>
+
+    <!-- Live clock -->
+    <div id="clock">00:00:00</div>
+
+    <!-- Set alarm -->
+    <div class="set-alarm">
+        <input type="time" id="alarmTime">
+        <button onclick="addAlarm()">Add Alarm</button>
+    </div>
+
+    <!-- Alarm list -->
+    <h2>Active Alarms</h2>
+    <ul id="alarmList"></ul>
+
+</div>
+
+<audio id="alarmSound"
+src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3"
+preload="auto"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
